@@ -184,7 +184,7 @@ export class ResumeLayerComponent implements OnInit{
   }
 
   addCertification(): void {
-    this.certifications.push(this.createExperienceGroup());
+    this.certifications.push(this.createCertificationGroup());
   }
 
   removeCertification(index: number): void {
