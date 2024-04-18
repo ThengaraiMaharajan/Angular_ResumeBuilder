@@ -1,10 +1,270 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { FormGroup,FormBuilder,FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-resume-layer',
   templateUrl: './resume-layer.component.html',
   styleUrl: './resume-layer.component.css'
 })
-export class ResumeLayerComponent {
+export class ResumeLayerComponent implements OnInit{
+
+  userDetailsForm! : FormGroup;
+  experienceForm! : FormGroup;
+  educationForm! : FormGroup;
+  certificationForm! : FormGroup;
+  skillForm! : FormGroup;
+  projectForm! : FormGroup;
+  softSkillForm! : FormGroup;
+  languageForm! : FormGroup;
+  interestForm! : FormGroup;
+
+  constructor(private fb : FormBuilder){}
+
+  ngOnInit(): void {
+    
+    this.userDetailsForm = this.fb.group({
+      name: ['', Validators.required],
+      designation: ['', Validators.required],
+      phone: ['', Validators.required],
+      mail: ['', Validators.required],
+      linkedIn: ['', Validators.required],
+      location: ['', Validators.required],
+      jobDescription: ['', Validators.required]
+    }) 
+
+    this.experienceForm = this.fb.group({
+      experiences: this.fb.array([this.createExperienceGroup()])
+    });
+
+    this.educationForm = this.fb.group({
+      education: this.fb.array([this.createEductionGroup()])
+    });
+
+    this.certificationForm = this.fb.group({
+      certifications: this.fb.array([this.createCertificationGroup()])
+    });
+
+    this.skillForm = this.fb.group({
+      skills: this.fb.array([this.createskillGroup()])
+    });
+
+    this.projectForm = this.fb.group({
+      projects: this.fb.array([this.createProjectGroup()])
+    });
+
+    this.softSkillForm = this.fb.group({
+      softSkills: this.fb.array([this.createSoftSkillGroup()])
+    });
+
+    this.languageForm = this.fb.group({
+      languages: this.fb.array([this.createLanguageGroup()])
+    });
+
+    this.interestForm = this.fb.group({
+      interests: this.fb.array([this.createInterestGroup()])
+    });
+
+  }
+
+  get experiences(): FormArray {
+    return this.experienceForm.get('experiences') as FormArray;
+  }
+
+  get education(): FormArray {
+    return this.educationForm.get('education') as FormArray;
+  }
+
+  get certifications(): FormArray {
+    return this.certificationForm.get('certifications') as FormArray;
+  }
+
+  get skills(): FormArray {
+    return this.skillForm.get('skills') as FormArray;
+  }
+
+  get projects(): FormArray {
+    return this.projectForm.get('projects') as FormArray;
+  }
+
+  get softSkills(): FormArray {
+    return this.softSkillForm.get('softSkills') as FormArray;
+  }
+
+  get languages(): FormArray {
+    return this.languageForm.get('languages') as FormArray;
+  }
+
+  get interests(): FormArray {
+    return this.interestForm.get('interests') as FormArray;
+  }
+
+  createExperienceGroup(): FormGroup {
+    return this.fb.group({
+      designation: ['', Validators.required],
+      company: ['', Validators.required],
+      periodFrom: ['', Validators.required],
+      periodTo: ['', Validators.required],
+      location: ['', Validators.required],
+      rolesAndResponsibility: ['', Validators.required]
+    });
+  }
+
+  createEductionGroup(): FormGroup {
+    return this.fb.group({
+      level: ['', Validators.required],
+      percentage: ['', Validators.required],
+      periodFrom: ['', Validators.required],
+      periodTo: ['', Validators.required],
+      instuition: ['', Validators.required],
+    });
+  }
+
+  createCertificationGroup(): FormGroup {
+    return this.fb.group({
+      name: ['', Validators.required],
+      percentage: ['', Validators.required],
+      periodFrom: ['', Validators.required],
+      periodTo: ['', Validators.required],
+      instuition: ['', Validators.required],
+      link:['',Validators.required],
+      certificateNumber:['',Validators.required],
+    });
+  }
+
+  createskillGroup(): FormGroup {
+    return this.fb.group({
+      skillName: ['', Validators.required],
+      skillScore: ['', Validators.required],
+    });
+  }
+
+  createProjectGroup(): FormGroup {
+    return this.fb.group({
+      projectName: ['', Validators.required],
+      periodFrom: ['', Validators.required],
+      periodTo: ['', Validators.required],
+      description: ['', Validators.required],
+      link: ['', Validators.required],
+    });
+  }
+
+  createSoftSkillGroup(): FormGroup {
+    return this.fb.group({
+      softSkillName: ['', Validators.required],
+      softSkillScore: ['', Validators.required],
+    });
+  }
+
+  createLanguageGroup(): FormGroup {
+    return this.fb.group({
+      languageName: ['', Validators.required],
+    });
+  }
+
+  createInterestGroup(): FormGroup {
+    return this.fb.group({
+      interestName: ['', Validators.required],
+    });
+  }
+
+  addExperience(): void {
+    this.experiences.push(this.createExperienceGroup());
+  }
+
+  removeExperience(index: number): void {
+    this.experiences.removeAt(index);
+  }
+
+  addEducation(): void {
+    this.education.push(this.createEductionGroup());
+  }
+
+  removeEducation(index: number): void {
+    this.education.removeAt(index);
+  }
+
+  addCertification(): void {
+    this.certifications.push(this.createExperienceGroup());
+  }
+
+  removeCertification(index: number): void {
+    this.certifications.removeAt(index);
+  }
+
+  addSkill(): void {
+    this.skills.push(this.createskillGroup());
+  }
+
+  removeSkill(index: number): void {
+    this.skills.removeAt(index);
+  }
+
+  addProject(): void {
+    this.projects.push(this.createProjectGroup());
+  }
+
+  removeProject(index: number): void {
+    this.projects.removeAt(index);
+  }
+
+  addSoftSkill(): void {
+    this.softSkills.push(this.createSoftSkillGroup());
+  }
+
+  removeSoftSkill(index: number): void {
+    this.softSkills.removeAt(index);
+  }
+
+  addLanguage(): void {
+    this.languages.push(this.createLanguageGroup());
+  }
+
+  removeLanguage(index: number): void {
+    this.languages.removeAt(index);
+  }
+
+  addInterest(): void {
+    this.interests.push(this.createInterestGroup());
+  }
+
+  removeInterest(index: number): void {
+    this.interests.removeAt(index);
+  }
+
+  submitUserDetailsForm(){
+    console.log('userDetailsForm value : \n', this.userDetailsForm.value);
+  }
+
+  submitExperienceForm(){
+    console.log('experienceForm value : \n', this.experienceForm.value);
+  }
+
+  submitEducationForm(){
+    console.log('educationForm value : \n', this.educationForm.value);
+  }
+
+  submitCertificationForm(){
+    console.log('certificationForm value : \n', this.certificationForm.value);
+  }
+
+  submitSkillForm(){
+    console.log('certificationForm value : \n', this.certificationForm.value);
+  }
+
+  submitProjectForm(){
+    console.log('skillForm value : \n', this.skillForm.value);
+  }
+
+  submitSoftSkillForm(){
+    console.log('softSkillForm value : \n', this.softSkillForm.value);
+  }
+
+  submitLanguageForm(){
+    console.log('languageForm value : \n', this.languageForm.value);
+  }
+
+  submitInterestForm(){
+    console.log('interestForm value : \n', this.interestForm.value);
+  }
 
 }
