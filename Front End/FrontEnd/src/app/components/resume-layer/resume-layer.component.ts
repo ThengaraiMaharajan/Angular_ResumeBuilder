@@ -18,6 +18,16 @@ export class ResumeLayerComponent implements OnInit{
   languageForm! : FormGroup;
   interestForm! : FormGroup;
 
+  userDetailsFormValue : any;
+  experienceFormValue : any;
+  educationFormValue : any;
+  certificationFormValue : any;
+  skillFormValue : any;
+  projectFormValue : any;
+  softSkillFormValue : any;
+  languageFormValue : any;
+  interestFormValue : any;
+
   constructor(private fb : FormBuilder){}
 
   ngOnInit(): void {

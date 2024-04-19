@@ -4,7 +4,7 @@
     </h3>
 </div>
 <div class="container-fluid">
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center">
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-0 p-3 border">
 
             <section class="container p-3 border" >
@@ -362,7 +362,83 @@
 
         <!--Preview Section-->
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-0 p-0 border">
-            <pre>{{userDetailsForm.value | json}}</pre>
+            
+            <div>
+                {{userDetailsForm.value.name}}<br>
+                {{userDetailsForm.value.designation}}<br>
+                {{userDetailsForm.value.phone}}<br>
+                {{userDetailsForm.value.mail}}<br>
+                {{userDetailsForm.value.linkedIn}}<br>
+                {{userDetailsForm.value.location}}<br>
+                {{userDetailsForm.value.jobDescription}}<br>
+            </div>
+            
+            <div>
+                <div *ngFor="let exp of experienceFormValue; index as i">
+                    {{exp.designation}}
+                    {{exp.company}}
+                    {{exp.periodFrom}}
+                    {{exp.periodTo}}
+                    {{exp.location}}
+                    {{exp.rolesAndResponsibility}}
+                </div>
+            </div>
+
+            <div>
+                <div *ngFor="let edu of educationForm.value; index as i">
+                    {{edu.level}}
+                    {{edu.percentage}}
+                    {{edu.periodFrom}}
+                    {{edu.periodTo}}
+                    {{edu.instuition}}
+                </div>
+            </div>
+
+            <div>
+                <div *ngFor="let cert of certificationForm.value; index as i">
+                    {{cert.name}}
+                    {{cert.percentage}}
+                    {{cert.periodFrom}}
+                    {{cert.periodTo}}
+                    {{cert.instuition}}
+                    {{cert.link}}
+                    {{cert.certificateNumber}} 
+                </div>
+            </div>
+
+
+            <div>
+                <div *ngFor="let skill of skillForm.value; index as i">
+                    {{skill.skillName}}
+                    {{skill.skillScore}}
+                </div>
+            </div>
+
+            <div>
+                <div *ngFor="let skill of softSkillForm.value; index as i">
+                    {{skill.softSkillName}}
+                    {{skill.softSkillScore}}
+                </div>
+            </div>
+
+
+            <div>
+                <div *ngFor="let language of languageForm.value; index as i">
+                    {{language.languageName}}
+                </div>
+            </div>
+
+            <div>
+                <div *ngFor="let interest of interestForm.value; index as i">
+                    {{interest.interestName}}
+                </div>
+            </div>
+
+            
+            
+            
+            
+            
             <pre>{{experienceForm.value | json}}</pre>
             <pre>{{educationForm.value | json}}</pre>
             <pre>{{certificationForm.value | json}}</pre>
