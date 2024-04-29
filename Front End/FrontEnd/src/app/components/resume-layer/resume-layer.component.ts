@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild, ElementRef } from '@angular/core';
 import { FormGroup,FormBuilder,FormArray, Validators } from '@angular/forms';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-resume-layer',
@@ -8,6 +10,7 @@ import { FormGroup,FormBuilder,FormArray, Validators } from '@angular/forms';
 })
 export class ResumeLayerComponent implements OnInit{
 
+  @ViewChild('resumePrint', { static: false }) resumePrint!: ElementRef;
   userDetailsForm! : FormGroup;
   experienceForm! : FormGroup;
   educationForm! : FormGroup;
@@ -275,6 +278,36 @@ export class ResumeLayerComponent implements OnInit{
 
   submitInterestForm(){
     console.log('interestForm value : \n', this.interestForm.value);
+  }
+
+  downloadAsPDF() {
+    const doc = new jspdf.jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    });
+  
+    const content = this.resumePrint.nativeElement;
+  
+    html2canvas(content, {
+      scale: 2, // Adjust the scale for higher resolution (optional)
+      logging: false, // Disable logging (optional)
+      width: content.offsetWidth, // Set canvas width to content width (optional)
+      height: content.offsetHeight // Set canvas height to content height (optional)
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/jpeg', 0.8); // Adjust JPEG quality
+      const imgWidth = 210; // A4 size
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+      doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+  
+      // Optimize PDF
+      doc.output('dataurlnewwindow');
+  
+      // Save PDF
+
+      doc.save(this.userDetailsForm.value.name + ' Resume');
+    });
   }
 
 }

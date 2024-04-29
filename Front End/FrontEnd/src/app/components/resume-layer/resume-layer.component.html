@@ -361,7 +361,7 @@
 
 
         <!--Preview Section-->
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-0 p-0 border">
+        <div #resumePrint class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-0 p-0 border">
             
             <div>
                 {{userDetailsForm.value.name}}<br>
@@ -374,18 +374,18 @@
             </div>
             
             <div>
-                <div *ngFor="let exp of experienceFormValue; index as i">
-                    {{exp.designation}}
-                    {{exp.company}}
-                    {{exp.periodFrom}}
-                    {{exp.periodTo}}
-                    {{exp.location}}
-                    {{exp.rolesAndResponsibility}}
+                <div *ngFor="let exp of experienceForm.get('experiences')?.value; index as i">
+                  {{exp.designation}} 
+                  {{exp.company}} 
+                  {{exp.periodFrom}} 
+                  {{exp.periodTo}} 
+                  {{exp.location}} 
+                  {{exp.rolesAndResponsibility}}
                 </div>
-            </div>
+              </div>
 
             <div>
-                <div *ngFor="let edu of educationForm.value; index as i">
+                <div *ngFor="let edu of educationForm.get('education')?.value; index as i">
                     {{edu.level}}
                     {{edu.percentage}}
                     {{edu.periodFrom}}
@@ -395,58 +395,37 @@
             </div>
 
             <div>
-                <div *ngFor="let cert of certificationForm.value; index as i">
-                    {{cert.name}}
-                    {{cert.percentage}}
-                    {{cert.periodFrom}}
-                    {{cert.periodTo}}
-                    {{cert.instuition}}
-                    {{cert.link}}
-                    {{cert.certificateNumber}} 
+                <div *ngFor="let cert of certificationForm.get('certifications')?.value; index as i">
+                  {{cert.name}} {{cert.percentage}} {{cert.periodFrom}} {{cert.periodTo}} {{cert.instuition}} {{cert.link}} {{cert.certificateNumber}}
                 </div>
-            </div>
-
-
-            <div>
-                <div *ngFor="let skill of skillForm.value; index as i">
-                    {{skill.skillName}}
-                    {{skill.skillScore}}
+              </div>
+              
+              <div>
+                <div *ngFor="let skill of skillForm.get('skills')?.value; index as i">
+                  {{skill.skillName}} {{skill.skillScore}}
                 </div>
-            </div>
-
-            <div>
-                <div *ngFor="let skill of softSkillForm.value; index as i">
-                    {{skill.softSkillName}}
-                    {{skill.softSkillScore}}
+              </div>
+              
+              <div>
+                <div *ngFor="let softSkill of softSkillForm.get('softSkills')?.value; index as i">
+                  {{softSkill.softSkillName}} {{softSkill.softSkillScore}}
                 </div>
-            </div>
-
-
-            <div>
-                <div *ngFor="let language of languageForm.value; index as i">
-                    {{language.languageName}}
+              </div>
+              
+              <div>
+                <div *ngFor="let language of languageForm.get('languages')?.value; index as i">
+                  {{language.languageName}}
                 </div>
-            </div>
-
-            <div>
-                <div *ngFor="let interest of interestForm.value; index as i">
-                    {{interest.interestName}}
+              </div>
+              
+              <div>
+                <div *ngFor="let interest of interestForm.get('interests')?.value; index as i">
+                  {{interest.interestName}}
                 </div>
-            </div>
+              </div>
 
-            
-            
-            
-            
-            
-            <pre>{{experienceForm.value | json}}</pre>
-            <pre>{{educationForm.value | json}}</pre>
-            <pre>{{certificationForm.value | json}}</pre>
-            <pre>{{skillForm.value | json}}</pre>
-            <pre>{{projectForm.value | json}}</pre>
-            <pre>{{softSkillForm.value | json}}</pre>
-            <pre>{{languageForm.value | json}}</pre>
-            <pre>{{interestForm.value | json}}</pre>
         </div>
     </div>
 </div>
+
+<button class="m-1 btn btn-success" (click)="downloadAsPDF()">Download as PDF</button>
