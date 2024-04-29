@@ -8,35 +8,59 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-0 p-3 border">
 
             <section class="container p-3 border" >
-                <h4>Your Introduction</h4>
                 <form [formGroup]="userDetailsForm">
-                    <div class="mt-2">
-                        <label for="name">name</label>
-                        <input type="text" formControlName="name" id="name"  class="form-control"  placeholder="Enter Your Name" />
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-8">
+                            <div class="mt-2">
+                                <label for="name">name</label>
+                                <input type="text" formControlName="name" id="name"  class="form-control"  placeholder="Enter Your Name" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-2">
-                        <label for="designation">designation</label>
-                        <input type="text" formControlName="designation" id="designation"  class="form-control"  placeholder="Enter Your Designation" />
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-8">
+                            <div class="mt-2">
+                                <label for="designation">designation</label>
+                                <input type="text" formControlName="designation" id="designation"  class="form-control"  placeholder="Enter Your Designation" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-2">
-                        <label for="phone">phone</label>
-                        <input type="tel" formControlName="phone" id="phone"  class="form-control"  placeholder="Enter Your Phone Number" />
+
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-3">
+                            <div class="mt-2">
+                                <label for="phone">phone</label>
+                                <input type="tel" formControlName="phone" id="phone"  class="form-control"  placeholder="Enter Your Phone Number" />
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mt-2">
+                                <label for="mail">mail</label>
+                                <input type="text" formControlName="mail" id="mail"  class="form-control"  placeholder="Enter Your E-mail address" />
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mt-2">
+                                <label for="linkedIn">linkedIn</label>
+                                <input type="text" formControlName="linkedIn" id="linkedIn"  class="form-control"  placeholder="Enter Your LinkedIn Profile" />
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mt-2">
+                                <label for="location">location</label>
+                                <input type="text" formControlName="location" id="location"  class="form-control"  placeholder="Enter Your Location" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-2">
-                        <label for="mail">mail</label>
-                        <input type="text" formControlName="mail" id="mail"  class="form-control"  placeholder="Enter Your E-mail address" />
-                    </div>
-                    <div class="mt-2">
-                        <label for="linkedIn">linkedIn</label>
-                        <input type="text" formControlName="linkedIn" id="linkedIn"  class="form-control"  placeholder="Enter Your LinkedIn Profile" />
-                    </div>
-                    <div class="mt-2">
-                        <label for="location">location</label>
-                        <input type="text" formControlName="location" id="location"  class="form-control"  placeholder="Enter Your Location" />
-                    </div>
-                    <div class="mt-2">
-                        <label for="jobDescription">Job Description / Summary</label>
-                        <input type="text" formControlName="jobDescription" id="jobDescription"  class="form-control" placeholder="Enter Your Job description"/>
+
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mt-2">
+                                <label for="jobDescription">Profile Summary</label>
+                                <input type="text" formControlName="jobDescription" id="jobDescription"  class="form-control" placeholder="Enter Your Job description"/>
+                            </div>
+                        </div>
                     </div>
                     <button (click)="submitUserDetailsForm()" type="submit" class="btn-block btn btn-primary mt-2" >Submit to view preview</button>
                 </form>
@@ -48,48 +72,76 @@
                 <form [formGroup]="experienceForm">
                     <div formArrayName="experiences">
                       <div *ngFor="let experience of experiences.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                          <label for="designation">Designation:</label>
-                          <input type="text" id="designation" formControlName="designation" class="form-control" >
-                          <div *ngIf="experience.get('designation')?.invalid && (experience.get('designation')?.dirty || experience.get('designation')?.touched)">
-                            <div *ngIf="experience.get('designation')?.errors?.['required']">Designation is required.</div>
-                          </div>
-                        </div>
-                        <div class="mt-2" >
-                          <label for="company">Company:</label>
-                          <input type="text" id="company" formControlName="company" class="form-control" >
-                          <div *ngIf="experience.get('company')?.invalid && (experience.get('company')?.dirty || experience.get('company')?.touched)">
-                            <div *ngIf="experience.get('company')?.errors?.['required']">Company is required.</div>
-                          </div>
-                        </div>
-                        <div class="mt-2" >
-                          <label for="periodFrom">Period From:</label>
-                          <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
-                          <div *ngIf="experience.get('periodFrom')?.invalid && (experience.get('periodFrom')?.dirty || experience.get('periodFrom')?.touched)">
-                            <div *ngIf="experience.get('periodFrom')?.errors?.['required']">Period is required.</div>
-                          </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="periodTo">Period:</label>
-                            <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
-                            <div *ngIf="experience.get('periodTo')?.invalid && (experience.get('periodTo')?.dirty || experience.get('periodTo')?.touched)">
-                              <div *ngIf="experience.get('periodTo')?.errors?.['required']">Period is required.</div>
+                        
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-2" >
+                                    <label for="company">Company:</label>
+                                    <input type="text" id="company" formControlName="company" class="form-control" >
+                                    <div *ngIf="experience.get('company')?.invalid && (experience.get('company')?.dirty || experience.get('company')?.touched)">
+                                      <div *ngIf="experience.get('company')?.errors?.['required']">Company is required.</div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                        <div class="mt-2" >
-                          <label for="location">Location:</label>
-                          <input type="text" id="location" formControlName="location" class="form-control" >
-                          <div *ngIf="experience.get('location')?.invalid && (experience.get('location')?.dirty || experience.get('location')?.touched)">
-                            <div *ngIf="experience.get('location')?.errors?.['required']">Location is required.</div>
-                          </div>
                         </div>
-                        <div class="mt-2" >
-                          <label for="rolesAndResponsibility">Roles and Responsibility:</label>
-                          <textarea id="rolesAndResponsibility" formControlName="rolesAndResponsibility" class="form-control" ></textarea>
-                          <div *ngIf="experience.get('rolesAndResponsibility')?.invalid && (experience.get('rolesAndResponsibility')?.dirty || experience.get('rolesAndResponsibility')?.touched)">
-                            <div *ngIf="experience.get('rolesAndResponsibility')?.errors?.['required']">Roles and Responsibility is required.</div>
-                          </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="location">Location:</label>
+                                    <input type="text" id="location" formControlName="location" class="form-control" >
+                                    <div *ngIf="experience.get('location')?.invalid && (experience.get('location')?.dirty || experience.get('location')?.touched)">
+                                      <div *ngIf="experience.get('location')?.errors?.['required']">Location is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
                         </div>
+                        
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-2" >
+                                    <label for="designation">Designation:</label>
+                                    <input type="text" id="designation" formControlName="designation" class="form-control" >
+                                    <div *ngIf="experience.get('designation')?.invalid && (experience.get('designation')?.dirty || experience.get('designation')?.touched)">
+                                      <div *ngIf="experience.get('designation')?.errors?.['required']">Designation is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodFrom">Period From:</label>
+                                    <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
+                                    <div *ngIf="experience.get('periodFrom')?.invalid && (experience.get('periodFrom')?.dirty || experience.get('periodFrom')?.touched)">
+                                      <div *ngIf="experience.get('periodFrom')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodTo">Period:</label>
+                                    <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
+                                    <div *ngIf="experience.get('periodTo')?.invalid && (experience.get('periodTo')?.dirty || experience.get('periodTo')?.touched)">
+                                      <div *ngIf="experience.get('periodTo')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-13">
+                                <div class="mt-2" >
+                                    <label for="rolesAndResponsibility">Roles and Responsibility:</label>
+                                    <textarea id="rolesAndResponsibility" formControlName="rolesAndResponsibility" class="form-control" ></textarea>
+                                    <div *ngIf="experience.get('rolesAndResponsibility')?.invalid && (experience.get('rolesAndResponsibility')?.dirty || experience.get('rolesAndResponsibility')?.touched)">
+                                      <div *ngIf="experience.get('rolesAndResponsibility')?.errors?.['required']">Roles and Responsibility is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>    
+                    
                         <button type="button" (click)="removeExperience(i)" class="btn btn-secondary btn-block" >Remove</button>
                       </div>
                     </div>
@@ -103,41 +155,71 @@
                 <form [formGroup]="educationForm">
                     <div formArrayName="education">
                       <div *ngFor="let education of education.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                          <label for="level">level:</label>
-                          <input type="text" id="level" formControlName="level" class="form-control" >
-                          <div *ngIf="education.get('level')?.invalid && (education.get('level')?.dirty || education.get('level')?.touched)">
-                            <div *ngIf="education.get('level')?.errors?.['required']">Level is required.</div>
-                          </div>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="mt-2" >
+                                    <label for="level">level:</label>
+                                    <input type="text" id="level" formControlName="level" class="form-control" >
+                                    <div *ngIf="education.get('level')?.invalid && (education.get('level')?.dirty || education.get('level')?.touched)">
+                                      <div *ngIf="education.get('level')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="mt-2" >
+                                    <label for="percentage">Percentage:</label>
+                                    <input type="text" id="percentage" formControlName="percentage" class="form-control" >
+                                    <div *ngIf="education.get('percentage')?.invalid && (education.get('percentage')?.dirty || education.get('percentage')?.touched)">
+                                      <div *ngIf="education.get('percentage')?.errors?.['required']">Company is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
                         </div>
-                        <div class="mt-2" >
-                          <label for="percentage">Percentage:</label>
-                          <input type="text" id="percentage" formControlName="percentage" class="form-control" >
-                          <div *ngIf="education.get('percentage')?.invalid && (education.get('percentage')?.dirty || education.get('percentage')?.touched)">
-                            <div *ngIf="education.get('percentage')?.errors?.['required']">Company is required.</div>
-                          </div>
+                        <div class="rowl">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="instuition">instuition:</label>
+                                    <input type="text" id="instuition" formControlName="instuition" class="form-control" >
+                                    <div *ngIf="education.get('instuition')?.invalid && (education.get('instuition')?.dirty || education.get('instuition')?.touched)">
+                                      <div *ngIf="education.get('instuition')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
                         </div>
-                        <div class="mt-2" >
-                          <label for="periodFrom">Period From:</label>
-                          <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
-                          <div *ngIf="education.get('periodFrom')?.invalid && (education.get('periodFrom')?.dirty || education.get('periodFrom')?.touched)">
-                            <div *ngIf="education.get('periodFrom')?.errors?.['required']">Period is required.</div>
-                          </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="periodTo">Period:</label>
-                            <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
-                            <div *ngIf="education.get('periodTo')?.invalid && (education.get('periodTo')?.dirty || education.get('periodTo')?.touched)">
-                              <div *ngIf="education.get('periodTo')?.errors?.['required']">Period is required.</div>
+                          <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="instuition">Location:</label>
+                                    <input type="text" id="instuition" formControlName="instuition" class="form-control" >
+                                    <div *ngIf="education.get('instuition')?.invalid && (education.get('instuition')?.dirty || education.get('instuition')?.touched)">
+                                      <div *ngIf="education.get('instuition')?.errors?.['required']">Location is required.</div>
+                                    </div>
+                                  </div>
                             </div>
                           </div>
-                        <div class="mt-2" >
-                          <label for="instuition">Location:</label>
-                          <input type="text" id="instuition" formControlName="instuition" class="form-control" >
-                          <div *ngIf="education.get('instuition')?.invalid && (education.get('instuition')?.dirty || education.get('instuition')?.touched)">
-                            <div *ngIf="education.get('instuition')?.errors?.['required']">Location is required.</div>
+
+                          <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodFrom">Period From:</label>
+                                    <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
+                                    <div *ngIf="education.get('periodFrom')?.invalid && (education.get('periodFrom')?.dirty || education.get('periodFrom')?.touched)">
+                                      <div *ngIf="education.get('periodFrom')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodTo">Period:</label>
+                                    <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
+                                    <div *ngIf="education.get('periodTo')?.invalid && (education.get('periodTo')?.dirty || education.get('periodTo')?.touched)">
+                                      <div *ngIf="education.get('periodTo')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                  </div>
+                            </div>
                           </div>
-                        </div>
+                        
+                        
                         <button type="button" (click)="removeEducation(i)" class="btn btn-secondary btn-block" >Remove</button>
                       </div>
                     </div>
@@ -153,55 +235,86 @@
                 <form [formGroup]="certificationForm">
                     <div formArrayName="certifications">
                     <div *ngFor="let certification of certifications.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                        <label for="name">name:</label>
-                        <input type="text" id="name" formControlName="name" class="form-control" >
-                        <div *ngIf="certification.get('name')?.invalid && (certification.get('name')?.dirty || certification.get('name')?.touched)">
-                            <div *ngIf="certification.get('name')?.errors?.['required']">Level is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                        <label for="percentage">Percentage:</label>
-                        <input type="text" id="percentage" formControlName="percentage" class="form-control" >
-                        <div *ngIf="certification.get('percentage')?.invalid && (certification.get('percentage')?.dirty || certification.get('percentage')?.touched)">
-                            <div *ngIf="certification.get('percentage')?.errors?.['required']">Company is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                        <label for="periodFrom">Period From:</label>
-                        <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
-                        <div *ngIf="certification.get('periodFrom')?.invalid && (certification.get('periodFrom')?.dirty || certification.get('periodFrom')?.touched)">
-                            <div *ngIf="certification.get('periodFrom')?.errors?.['required']">Period is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="periodTo">Period to:</label>
-                            <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
-                            <div *ngIf="certification.get('periodTo')?.invalid && (certification.get('periodTo')?.dirty || certification.get('periodTo')?.touched)">
-                            <div *ngIf="certification.get('periodTo')?.errors?.['required']">Period is required.</div>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="mt-2" >
+                                    <label for="name">name:</label>
+                                    <input type="text" id="name" formControlName="name" class="form-control" >
+                                    <div *ngIf="certification.get('name')?.invalid && (certification.get('name')?.dirty || certification.get('name')?.touched)">
+                                        <div *ngIf="certification.get('name')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="mt-2" >
+                                    <label for="percentage">Percentage:</label>
+                                    <input type="text" id="percentage" formControlName="percentage" class="form-control" >
+                                    <div *ngIf="certification.get('percentage')?.invalid && (certification.get('percentage')?.dirty || certification.get('percentage')?.touched)">
+                                        <div *ngIf="certification.get('percentage')?.errors?.['required']">Company is required.</div>
+                                    </div>
+                                    </div>
                             </div>
                         </div>
-                        <div class="mt-2" >
-                        <label for="instuition">instuition:</label>
-                        <input type="text" id="instuition" formControlName="instuition" class="form-control" >
-                        <div *ngIf="certification.get('instuition')?.invalid && (certification.get('instuition')?.dirty || certification.get('instuition')?.touched)">
-                            <div *ngIf="certification.get('instuition')?.errors?.['required']">Location is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="link">Link:</label>
-                            <input type="text" id="link" formControlName="link" class="form-control" >
-                            <div *ngIf="certification.get('link')?.invalid && (certification.get('link')?.dirty || certification.get('link')?.touched)">
-                            <div *ngIf="certification.get('link')?.errors?.['required']">Location is required.</div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="certificateNumber">certificateNumber:</label>
+                                    <input type="text" id="certificateNumber" formControlName="certificateNumber" class="form-control" >
+                                    <div *ngIf="certification.get('certificateNumber')?.invalid && (certification.get('certificateNumber')?.dirty || certification.get('certificateNumber')?.touched)">
+                                    <div *ngIf="certification.get('certificateNumber')?.errors?.['required']">Location is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="mt-2" >
-                            <label for="certificateNumber">certificateNumber:</label>
-                            <input type="text" id="certificateNumber" formControlName="certificateNumber" class="form-control" >
-                            <div *ngIf="certification.get('certificateNumber')?.invalid && (certification.get('certificateNumber')?.dirty || certification.get('certificateNumber')?.touched)">
-                            <div *ngIf="certification.get('certificateNumber')?.errors?.['required']">Location is required.</div>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodFrom">Period From:</label>
+                                    <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
+                                    <div *ngIf="certification.get('periodFrom')?.invalid && (certification.get('periodFrom')?.dirty || certification.get('periodFrom')?.touched)">
+                                        <div *ngIf="certification.get('periodFrom')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                    </div>
+                                    
+                            </div>
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodTo">Period to:</label>
+                                    <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
+                                    <div *ngIf="certification.get('periodTo')?.invalid && (certification.get('periodTo')?.dirty || certification.get('periodTo')?.touched)">
+                                    <div *ngIf="certification.get('periodTo')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="link">Link:</label>
+                                    <input type="text" id="link" formControlName="link" class="form-control" >
+                                    <div *ngIf="certification.get('link')?.invalid && (certification.get('link')?.dirty || certification.get('link')?.touched)">
+                                    <div *ngIf="certification.get('link')?.errors?.['required']">Location is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="instuition">instuition:</label>
+                                    <input type="text" id="instuition" formControlName="instuition" class="form-control" >
+                                    <div *ngIf="certification.get('instuition')?.invalid && (certification.get('instuition')?.dirty || certification.get('instuition')?.touched)">
+                                        <div *ngIf="certification.get('instuition')?.errors?.['required']">Location is required.</div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+
+
                         <button type="button" (click)="removeCertification(i)" class="btn btn-secondary btn-block" >Remove</button>
                     </div>
                     </div>
@@ -215,18 +328,24 @@
                 <form [formGroup]="skillForm">
                     <div formArrayName="skills">
                     <div *ngFor="let skill of skills.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                            <label for="skillName">skillName:</label>
-                            <input type="text" id="skillName" formControlName="skillName" class="form-control" >
-                            <div *ngIf="skill.get('skillName')?.invalid && (skill.get('skillName')?.dirty || skill.get('skillName')?.touched)">
-                                <div *ngIf="skill.get('skillName')?.errors?.['required']">Level is required.</div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="skillName">skillName:</label>
+                                    <input type="text" id="skillName" formControlName="skillName" class="form-control" >
+                                    <div *ngIf="skill.get('skillName')?.invalid && (skill.get('skillName')?.dirty || skill.get('skillName')?.touched)">
+                                        <div *ngIf="skill.get('skillName')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="skillScore">skillScore:</label>
-                            <input type="text" id="skillScore" formControlName="skillScore" class="form-control" >
-                            <div *ngIf="skill.get('skillScore')?.invalid && (skill.get('skillScore')?.dirty || skill.get('skillScore')?.touched)">
-                                <div *ngIf="skill.get('skillScore')?.errors?.['required']">Company is required.</div>
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="skillScore">skillScore:</label>
+                                    <input type="text" id="skillScore" formControlName="skillScore" class="form-control" >
+                                    <div *ngIf="skill.get('skillScore')?.invalid && (skill.get('skillScore')?.dirty || skill.get('skillScore')?.touched)">
+                                        <div *ngIf="skill.get('skillScore')?.errors?.['required']">Company is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button type="button" (click)="removeSkill(i)" class="btn btn-secondary btn-block" >Remove</button>
@@ -242,39 +361,57 @@
                 <form [formGroup]="projectForm">
                     <div formArrayName="projects">
                     <div *ngFor="let project of projects.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                        <label for="projectName">projectName:</label>
-                        <input type="text" id="projectName" formControlName="projectName" class="form-control" >
-                        <div *ngIf="project.get('projectName')?.invalid && (project.get('projectName')?.dirty || project.get('projectName')?.touched)">
-                            <div *ngIf="project.get('projectName')?.errors?.['required']">Level is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                        <label for="description">description:</label>
-                        <input type="text" id="description" formControlName="description" class="form-control" >
-                        <div *ngIf="project.get('description')?.invalid && (project.get('description')?.dirty || project.get('description')?.touched)">
-                            <div *ngIf="project.get('description')?.errors?.['required']">Company is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                        <label for="periodFrom">Period From:</label>
-                        <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
-                        <div *ngIf="project.get('periodFrom')?.invalid && (project.get('periodFrom')?.dirty || project.get('periodFrom')?.touched)">
-                            <div *ngIf="project.get('periodFrom')?.errors?.['required']">Period is required.</div>
-                        </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="periodTo">Period to:</label>
-                            <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
-                            <div *ngIf="project.get('periodTo')?.invalid && (project.get('periodTo')?.dirty || project.get('periodTo')?.touched)">
-                            <div *ngIf="project.get('periodTo')?.errors?.['required']">Period is required.</div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mt-2" >
+                                    <label for="projectName">projectName:</label>
+                                    <input type="text" id="projectName" formControlName="projectName" class="form-control" >
+                                    <div *ngIf="project.get('projectName')?.invalid && (project.get('projectName')?.dirty || project.get('projectName')?.touched)">
+                                        <div *ngIf="project.get('projectName')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                    </div>
                             </div>
                         </div>
-                        <div class="mt-2" >
-                            <label for="link">Link:</label>
-                            <input type="text" id="link" formControlName="link" class="form-control" >
-                            <div *ngIf="project.get('link')?.invalid && (project.get('link')?.dirty || project.get('link')?.touched)">
-                            <div *ngIf="project.get('link')?.errors?.['required']">Location is required.</div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="description">description:</label>
+                                    <input type="text" id="description" formControlName="description" class="form-control" >
+                                    <div *ngIf="project.get('description')?.invalid && (project.get('description')?.dirty || project.get('description')?.touched)">
+                                        <div *ngIf="project.get('description')?.errors?.['required']">Company is required.</div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodFrom">Period From:</label>
+                                    <input type="text" id="periodFrom" formControlName="periodFrom" class="form-control" >
+                                    <div *ngIf="project.get('periodFrom')?.invalid && (project.get('periodFrom')?.dirty || project.get('periodFrom')?.touched)">
+                                        <div *ngIf="project.get('periodFrom')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                    </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="periodTo">Period to:</label>
+                                    <input type="text" id="periodTo" formControlName="periodTo" class="form-control" >
+                                    <div *ngIf="project.get('periodTo')?.invalid && (project.get('periodTo')?.dirty || project.get('periodTo')?.touched)">
+                                    <div *ngIf="project.get('periodTo')?.errors?.['required']">Period is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="link">Link:</label>
+                                    <input type="text" id="link" formControlName="link" class="form-control" >
+                                    <div *ngIf="project.get('link')?.invalid && (project.get('link')?.dirty || project.get('link')?.touched)">
+                                    <div *ngIf="project.get('link')?.errors?.['required']">Location is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
             
@@ -292,18 +429,24 @@
                 <form [formGroup]="softSkillForm">
                     <div formArrayName="softSkills">
                     <div *ngFor="let skill of softSkills.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                            <label for="softSkillName">softSkillName:</label>
-                            <input type="text" id="softSkillName" formControlName="softSkillName" class="form-control" >
-                            <div *ngIf="skill.get('softSkillName')?.invalid && (skill.get('softSkillName')?.dirty || skill.get('softSkillName')?.touched)">
-                                <div *ngIf="skill.get('softSkillName')?.errors?.['required']">Level is required.</div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="softSkillName">softSkillName:</label>
+                                    <input type="text" id="softSkillName" formControlName="softSkillName" class="form-control" >
+                                    <div *ngIf="skill.get('softSkillName')?.invalid && (skill.get('softSkillName')?.dirty || skill.get('softSkillName')?.touched)">
+                                        <div *ngIf="skill.get('softSkillName')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-2" >
-                            <label for="softSkillScore">softSkillScore:</label>
-                            <input type="text" id="softSkillScore" formControlName="softSkillScore" class="form-control" >
-                            <div *ngIf="skill.get('softSkillScore')?.invalid && (skill.get('softSkillScore')?.dirty || skill.get('softSkillScore')?.touched)">
-                                <div *ngIf="skill.get('softSkillScore')?.errors?.['required']">Company is required.</div>
+                            <div class="col-6">
+                                <div class="mt-2" >
+                                    <label for="softSkillScore">softSkillScore:</label>
+                                    <input type="text" id="softSkillScore" formControlName="softSkillScore" class="form-control" >
+                                    <div *ngIf="skill.get('softSkillScore')?.invalid && (skill.get('softSkillScore')?.dirty || skill.get('softSkillScore')?.touched)">
+                                        <div *ngIf="skill.get('softSkillScore')?.errors?.['required']">Company is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button type="button" (click)="removeSoftSkill(i)" class="btn btn-secondary btn-block" >Remove</button>
@@ -319,11 +462,15 @@
                 <form [formGroup]="languageForm">
                     <div formArrayName="languages">
                     <div *ngFor="let language of languages.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                            <label for="languageName">languageName:</label>
-                            <input type="text" id="languageName" formControlName="languageName" class="form-control" >
-                            <div *ngIf="language.get('languageName')?.invalid && (language.get('languageName')?.dirty || language.get('languageName')?.touched)">
-                                <div *ngIf="language.get('languageName')?.errors?.['required']">Level is required.</div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="languageName">languageName:</label>
+                                    <input type="text" id="languageName" formControlName="languageName" class="form-control" >
+                                    <div *ngIf="language.get('languageName')?.invalid && (language.get('languageName')?.dirty || language.get('languageName')?.touched)">
+                                        <div *ngIf="language.get('languageName')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button type="button" (click)="removeLanguage(i)" class="btn btn-secondary btn-block" >Remove</button>
@@ -340,11 +487,15 @@
                 <form [formGroup]="interestForm">
                     <div formArrayName="interests">
                     <div *ngFor="let interest of interests.controls; let i=index" [formGroupName]="i">
-                        <div class="mt-2" >
-                            <label for="interestName">interestName:</label>
-                            <input type="text" id="interestName" formControlName="interestName" class="form-control" >
-                            <div *ngIf="interest.get('interestName')?.invalid && (interest.get('interestName')?.dirty || interest.get('interestName')?.touched)">
-                                <div *ngIf="interest.get('interestName')?.errors?.['required']">Level is required.</div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-2" >
+                                    <label for="interestName">interestName:</label>
+                                    <input type="text" id="interestName" formControlName="interestName" class="form-control" >
+                                    <div *ngIf="interest.get('interestName')?.invalid && (interest.get('interestName')?.dirty || interest.get('interestName')?.touched)">
+                                        <div *ngIf="interest.get('interestName')?.errors?.['required']">Level is required.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button type="button" (click)="removeInterest(i)" class="btn btn-secondary btn-block" >Remove</button>
@@ -363,66 +514,200 @@
         <!--Preview Section-->
         <div #resumePrint class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 m-0 p-0 border">
             
+           <div class="p-3">
             <div>
-                {{userDetailsForm.value.name}}<br>
-                {{userDetailsForm.value.designation}}<br>
-                {{userDetailsForm.value.phone}}<br>
-                {{userDetailsForm.value.mail}}<br>
-                {{userDetailsForm.value.linkedIn}}<br>
-                {{userDetailsForm.value.location}}<br>
-                {{userDetailsForm.value.jobDescription}}<br>
+                <div class="row ats-font-heading">
+                    <div class="col-8">
+                        {{userDetailsForm.value.name}}
+                    </div>
+                    <div class="col-8">
+                        {{userDetailsForm.value.designation}}
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center ats-font-content">
+                    <div>
+                        {{userDetailsForm.value.phone}} |
+                    </div>
+                    <div>
+                        {{userDetailsForm.value.mail}} | 
+                    </div>
+                    <div>
+                        {{userDetailsForm.value.linkedIn}} | 
+                    </div>
+                    <div>
+                        {{userDetailsForm.value.location}}
+                    </div>
+                </div>
+                <div class="row ats-font-content">
+                    <div class="col-12 ">
+                        {{userDetailsForm.value.jobDescription}}
+                    </div>
+                </div>
+
             </div>
             
             <div>
+                <p class="ats-font-heading">Experience</p>
+                <hr>
                 <div *ngFor="let exp of experienceForm.get('experiences')?.value; index as i">
-                  {{exp.designation}} 
-                  {{exp.company}} 
-                  {{exp.periodFrom}} 
-                  {{exp.periodTo}} 
-                  {{exp.location}} 
-                  {{exp.rolesAndResponsibility}}
+                    <div class="row">
+                        <div class="col-8">
+                            {{exp.company}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{exp.location}} 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            {{exp.designation}} 
+                        </div>
+                    </div>
+                   
+                  <div class="d-flex">
+                    <div  >
+                        {{exp.periodFrom}} - 
+                    </div>
+                    <div  >
+                        {{exp.periodTo}} 
+                    </div>
+                  </div> 
+                  
+                  <div class="row">
+                    <div class="col-12">
+                        {{exp.rolesAndResponsibility}}
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
 
             <div>
+                <p class="ats-font-heading">Education</p>
+                <hr>
                 <div *ngFor="let edu of educationForm.get('education')?.value; index as i">
-                    {{edu.level}}
-                    {{edu.percentage}}
-                    {{edu.periodFrom}}
-                    {{edu.periodTo}}
-                    {{edu.instuition}}
+                    <div class="row">
+                        <div class="col-10">
+                            {{edu.level}}
+                        </div>
+                        <div class="col-2">
+                            {{edu.percentage}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{edu.instuition}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            {{edu.location}}
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex">
+                        <div>
+                            {{edu.periodFrom}} -
+                        </div>
+                        <div>
+                            {{edu.periodTo}}
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
             <div>
+                <p class="ats-font-heading">Certifications</p>
+                <hr>
                 <div *ngFor="let cert of certificationForm.get('certifications')?.value; index as i">
-                  {{cert.name}} {{cert.percentage}} {{cert.periodFrom}} {{cert.periodTo}} {{cert.instuition}} {{cert.link}} {{cert.certificateNumber}}
+                  <div class="row">
+                    <div class="col-10">
+                        {{cert.name}}
+                    </div>
+                    <div class="col-2">
+                        {{cert.percentage}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                        {{cert.certificateNumber}}
+                    </div>
+                  </div>
+                  <div class="d-flex" >
+                    <div>
+                        {{cert.periodFrom}} - 
+                    </div>
+                      <div>
+                        {{cert.periodTo}}
+                     </div>
+                  </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{cert.instuition}}
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-12">
+                            {{cert.link}} 
+                        </div>
+                    </div>
                 </div>
               </div>
               
               <div>
+                <p class="ats-font-heading">Skills</p>
+                <hr>
                 <div *ngFor="let skill of skillForm.get('skills')?.value; index as i">
-                  {{skill.skillName}} {{skill.skillScore}}
+                  <div class="row">
+                    <div class="col-6">
+                        {{skill.skillName}}
+                    </div>
+                    <div class="col-6">
+                        {{skill.skillScore}}
+                    </div>
+                  </div> 
                 </div>
               </div>
               
               <div>
+                <p class="ats-font-heading">Soft Skills</p>
+                <hr>
                 <div *ngFor="let softSkill of softSkillForm.get('softSkills')?.value; index as i">
-                  {{softSkill.softSkillName}} {{softSkill.softSkillScore}}
+                  <div class="row">
+                    <div class="col-6">
+                        {{softSkill.softSkillName}} 
+                    </div>
+                    <div class="col-6">
+                        {{softSkill.softSkillScore}}
+                    </div>
+                  </div>
                 </div>
               </div>
               
               <div>
+                <p class="ats-font-heading">Language</p>
+                <hr>
                 <div *ngFor="let language of languageForm.get('languages')?.value; index as i">
-                  {{language.languageName}}
+                  <div class="d-flex">
+                    {{language.languageName}}
+                  </div>
                 </div>
               </div>
               
               <div>
+                <p class="ats-font-heading">Interests</p>
+                <hr>
                 <div *ngFor="let interest of interestForm.get('interests')?.value; index as i">
-                  {{interest.interestName}}
+                    <div class="d-flex">
+                        {{interest.interestName}}
+                    </div>
+                    
                 </div>
               </div>
+           </div>
 
         </div>
     </div>
