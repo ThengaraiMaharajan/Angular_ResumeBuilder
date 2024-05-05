@@ -295,18 +295,31 @@ export class ResumeLayerComponent implements OnInit{
       width: content.offsetWidth, // Set canvas width to content width (optional)
       height: content.offsetHeight // Set canvas height to content height (optional)
     }).then(canvas => {
-      const imgData = canvas.toDataURL('image/jpeg', 0.8); // Adjust JPEG quality
-      const imgWidth = 210; // A4 size
+      const imgData = canvas.toDataURL('image/jpeg', 0.8);
+      const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-  
-      doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
-  
-      // Optimize PDF
-      doc.output('dataurlnewwindow');
-  
-      // Save PDF
 
-      doc.save(this.userDetailsForm.value.name + ' Resume');
+    // Check if content exceeds the height of one A4 page
+    const maxA4Height = 297; // Height of one A4 page in mm
+    let yOffset = 0;
+
+    while (yOffset < imgHeight) {
+      // Add image to PDF
+      doc.addImage(imgData, 'JPEG', 0, -yOffset, imgWidth, imgHeight);
+
+      // Add new page if content exceeds the height of one A4 page
+      if (yOffset + maxA4Height < imgHeight) {
+        doc.addPage();
+      }
+
+      yOffset += maxA4Height;
+    }
+
+    // Optimize PDF
+    doc.output('dataurlnewwindow');
+
+    // Save PDF
+    doc.save(this.userDetailsForm.value.name + ' Resume');
     });
   }
 

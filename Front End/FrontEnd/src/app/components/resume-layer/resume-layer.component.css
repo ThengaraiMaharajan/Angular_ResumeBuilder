@@ -5,3 +5,16 @@
 .ats-font-content{
     font-size: 18px;
 }
+.first-right-border-alone{
+    border-right: solid 1px black;
+    padding-right: 5px;
+}
+.right-border-alone{
+    border-right: solid 1px black;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.pad-y-5px{
+    padding-left: 5px;
+    padding-right: 5px;
+}
