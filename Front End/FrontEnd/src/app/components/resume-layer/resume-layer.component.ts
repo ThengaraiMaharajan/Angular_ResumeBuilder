@@ -290,36 +290,57 @@ export class ResumeLayerComponent implements OnInit{
     const content = this.resumePrint.nativeElement;
   
     html2canvas(content, {
-      scale: 2, // Adjust the scale for higher resolution (optional)
-      logging: false, // Disable logging (optional)
-      width: content.offsetWidth, // Set canvas width to content width (optional)
-      height: content.offsetHeight // Set canvas height to content height (optional)
+      scale: 2,
+      logging: false,
+      width: content.offsetWidth,
+      height: content.offsetHeight
     }).then(canvas => {
       const imgData = canvas.toDataURL('image/jpeg', 0.8);
       const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-    // Check if content exceeds the height of one A4 page
-    const maxA4Height = 297; // Height of one A4 page in mm
-    let yOffset = 0;
-
-    while (yOffset < imgHeight) {
-      // Add image to PDF
-      doc.addImage(imgData, 'JPEG', 0, -yOffset, imgWidth, imgHeight);
-
-      // Add new page if content exceeds the height of one A4 page
-      if (yOffset + maxA4Height < imgHeight) {
-        doc.addPage();
+  
+      // Check if content exceeds the height of one A4 page
+      const maxA4Height = 297; // Height of one A4 page in mm
+      let yOffset = 0;
+      let currentPage = 1;
+  
+      while (yOffset < imgHeight) {
+        // Add image to PDF
+        doc.addImage(imgData, 'JPEG', 0, -yOffset, imgWidth, imgHeight);
+  
+        // Add new page if content exceeds the height of one A4 page
+        if (yOffset + maxA4Height < imgHeight) {
+          doc.addPage();
+          currentPage++;
+        }
+  
+        yOffset += maxA4Height;
       }
-
-      yOffset += maxA4Height;
-    }
-
-    // Optimize PDF
-    doc.output('dataurlnewwindow');
-
-    // Save PDF
-    doc.save(this.userDetailsForm.value.name + ' Resume');
+  
+      // Reset yOffset for adding text
+      yOffset = maxA4Height * (currentPage - 1);
+  
+      // Adjust text position if it breaks between pages
+      const remainingTextHeight = imgHeight - yOffset;
+      const scale = remainingTextHeight / imgHeight;
+  
+      // Get text position and size
+      const textX = 0;
+      const textY = -(content.offsetHeight * (1 - scale));
+      const textWidth = content.offsetWidth;
+      const textHeight = content.offsetHeight * scale;
+  
+      // Convert text to base64
+      const textData = canvas.toDataURL('image/jpeg', 0.8);
+      
+      // Add text to PDF
+      doc.addImage(textData, 'JPEG', textX, textY, textWidth, textHeight);
+  
+      // Optimize PDF
+      doc.output('dataurlnewwindow');
+  
+      // Save PDF
+      doc.save(this.userDetailsForm.value.name + ' Resume');
     });
   }
 
